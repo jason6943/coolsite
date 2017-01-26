@@ -1,0 +1,138 @@
+
+
+@mixin smallScreen {
+	@media (max-width: 767px) {
+		@content;
+	}
+}
+
+@mixin smallScreen {
+	@media (max-width: 767px) {
+		@content;
+	}
+}
+
+@mixin MLScreen {
+	@media (min-width: 767px) {
+		@content;
+	}
+}
+
+html {
+	font-size: 16px;
+}
+
+.cst_sectionBlock {
+	position: relative;
+	background-position:  50% 50%;
+	background-size:  cover;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+}
+
+.cst_container_base {
+	position: relative;
+}
+
+.cst_mLR-15 {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+$pLR :(pLR1:1rem , pLR05:0.5rem , pLR0:0rem);
+	@each $p, $size in $pLR {
+		.cst_#{$p} {
+			padding-left: $size;
+			padding-right: $size;
+  		}
+	}
+
+$flexSpace_p :(p1:1rem , p05:0.5rem);
+	@each $p, $size in $flexSpace_p {
+		.cst_flexSpace_#{$p} > .flexSpaceitem {
+			padding: $size;
+  		}
+	}
+
+$flexSpace_m :(m1:1rem , m05:0.5rem);
+	@each $m, $size in $flexSpace_m {
+		.cst_flexSpace_#{$m} > .flexSpaceitem {
+			margin: $size;
+  		}
+	}
+
+$gridSpace_p :(p1:1rem , p05:0.5rem , p025:0.25rem , p0:0rem);
+	@each $p, $size in $gridSpace_p {
+		.cst_gridSpace_#{$p} .row >.c-column  {
+			padding:  $size;
+  		}
+  		.cst_gridSpace_#{$p} {
+	  		padding:  $size;
+  		}
+  		.cst_gridSpace_#{$p} > .noborder{
+	  		margin: -($size*2);
+  		}
+
+	}
+
+.cst_w100 {
+	width: 100%;
+}
+
+.cst_h100 {
+	height: 100%;
+}
+
+.cst_BGfixed {
+	background-attachment: fixed;
+}
+
+.cst_BGtransparent {
+	background: transparent !important;
+}
+
+.jarallax {
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.cst_flex_vetically {
+	justify-content: center;
+	align-items: center;
+}
+
+.cst_flexReverse {
+	display: flex;
+	@include MLScreen {
+		flex-direction: row-reverse !important;
+		-ms-flex-direction: row-reverse !important;
+	}
+
+	@include smallScreen {
+		flex-direction: column-reverse !important;
+	}
+}
+//效果
+
+.cst_hovershadow_01 {
+		transform: rotate(0deg) scale(1) translate(0%,0%);
+		transition: All 0.3s ease; -ms-transform: rotate(0deg) scale(1) translate(0%,0%);
+		-moz-transform: rotate(0deg) scale(1) translate(0%,0%);
+		-webkit-transform: rotate(0deg) scale(1) translate(0%,0%);
+		-ms-transition: All 0.3s ease;
+		-moz-transition: All 0.3s ease;
+		-webkit-transition: All 0.3s ease;
+	&:hover{
+		@include MLScreen {
+			box-shadow: 0 15px 12px 0 rgba(0,0,0,0.22), 0 19px 38px 0 rgba(0,0,0,0.30);
+			transform: rotate(0deg) scale(1) translate(0%,0%);
+			transition: All 0.3s ease;
+			-ms-transition: All 0.3s ease;
+			-moz-transition: All 0.3s ease;
+			-webkit-transition: All 0.3s ease;
+		}
+	}
+}
